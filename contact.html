@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ntando Nkala's contact form for appointments.">
+    <title>Contact - Ntando Nkala</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Ntando Nkala</h1>
+		<img src="design.jpg" alt="Hero Image" style="width:35%; height:auto; margin-top:10px;">
+        <p style="color: orange;">“Turning Ideas into Digital Masterpieces.”</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="container">
+        <section id="contact">
+            <h2>Contact</h2>
+            <form id="contact-form">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="5" required></textarea><br>
+				<label for="appointment-type">Appointment Type:</label><br><br>
+				<select id="appointment-type" name="appointment-type" required>
+					<option value="">-- Select an option --</option>
+					<option value="consultation">Consultation</option>
+					<option value="project-discussion">Project Discussion</option>
+					<option value="follow-up">Follow-Up</option>
+				</select><br><br>
+				
+                <input type="submit" value="Send">
+                <input type="reset" value="Reset">
+            </form>
+			<p id="confirmation" style="display: none; color: green;">Your message has been sent successfully!</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ntando Nkala. All rights reserved.</p>
+    </footer>
+    
+    <script>
+      
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault(); 
+
+    
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const appointmentType = document.getElementById('appointment-type').value; 
+
+    if (name && email && message && appointmentType) {
+        
+        const confirmation = document.getElementById('confirmation');
+        confirmation.textContent = `Thank you, ${name}! Your message has been received. You selected "${appointmentType}" as your appointment type.`;
+        confirmation.style.display = 'block'; 
+        this.reset(); 
+    } else {
+        alert("Please fill in all the fields, including the appointment type!");
+    }
+});
+
+
+    </script>
+</body>
+</html>
